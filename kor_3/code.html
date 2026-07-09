@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ATELIER AI | 예약</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f6f3f2",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-background": "#1b1c1c",
+                        "on-secondary-fixed": "#1b1d0e",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-bright": "#fbf9f8",
+                        "on-primary-fixed": "#001c3a",
+                        "on-tertiary-container": "#858687",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#1d1f1f",
+                        "on-surface-variant": "#43474e",
+                        "surface-tint": "#476083",
+                        "secondary": "#5e604d",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "outline": "#74777f",
+                        "on-secondary-fixed-variant": "#474836",
+                        "on-primary-container": "#6f88ad",
+                        "surface-variant": "#e4e2e1",
+                        "surface-container-highest": "#e4e2e1",
+                        "inverse-on-surface": "#f3f0f0",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#e1e1c9",
+                        "primary": "#000613",
+                        "background": "#fbf9f8",
+                        "tertiary": "#050606",
+                        "surface": "#fbf9f8",
+                        "inverse-primary": "#afc8f0",
+                        "inverse-surface": "#303030",
+                        "primary-fixed": "#d4e3ff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#afc8f0",
+                        "surface-container-high": "#eae8e7",
+                        "primary-container": "#001f3f",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container": "#f0eded",
+                        "secondary-fixed": "#e4e4cc",
+                        "secondary-fixed-dim": "#c8c8b0",
+                        "on-secondary-container": "#636451"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-xl": "64px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-xl": ["Bodoni Moda"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e4e2e1;
+            border-radius: 2px;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md fixed top-0 w-full border-b border-outline-variant z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-[1440px] mx-auto w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer active:opacity-70 text-primary">menu</span>
+<a href="../kor_1/code.html"><h1 class="font-headline-md text-headline-md tracking-tighter text-primary">ATELIER AI</h1></a>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="../kor_1/code.html">홈</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="../kor_2/code.html">서비스</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md" href="../ai_kor/code.html">AI 분석</a>
+<a class="text-primary font-semibold border-b-2 border-primary font-label-md" href="../kor_3/code.html">예약하기</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer active:opacity-70 text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-stack-xl max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop min-h-screen">
+<!-- Header Section -->
+<section class="mb-stack-xl max-w-4xl">
+<h2 class="font-headline-xl text-headline-xl mb-4">세션 예약하기</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">AI와 전문가의 노하우가 결합된 맞춤형 스타일링 컨설팅을 경험하세요. 디지털 아틀리에에서 당신의 미학을 완성할 자리를 예약하세요.</p>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Booking & Calendar Column -->
+<div class="lg:col-span-7 space-y-stack-lg">
+<div class="bg-surface-container-lowest border border-outline-variant p-8 rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md">2024년 10월</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">chevron_left</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Layout -->
+<div class="calendar-grid mb-6">
+<!-- Days Header -->
+<div class="text-center py-2 font-label-sm text-on-surface-variant uppercase tracking-widest">월</div>
+<div class="text-center py-2 font-label-sm text-on-surface-variant uppercase tracking-widest">화</div>
+<div class="text-center py-2 font-label-sm text-on-surface-variant uppercase tracking-widest">수</div>
+<div class="text-center py-2 font-label-sm text-on-surface-variant uppercase tracking-widest">목</div>
+<div class="text-center py-2 font-label-sm text-on-surface-variant uppercase tracking-widest">금</div>
+<div class="text-center py-2 font-label-sm text-on-surface-variant uppercase tracking-widest">토</div>
+<div class="text-center py-2 font-label-sm text-on-surface-variant uppercase tracking-widest">일</div>
+<!-- Placeholder Calendar Days -->
+<div class="text-center p-4 text-outline-variant">29</div>
+<div class="text-center p-4 text-outline-variant">30</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors border border-transparent">1</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">2</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">3</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">4</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">5</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">6</div>
+<div class="text-center p-4 bg-primary text-on-primary font-bold">7</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">8</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">9</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">10</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">11</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">12</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">13</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">14</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">15</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">16</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">17</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">18</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">19</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">20</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">21</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">22</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">23</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">24</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">25</div>
+<div class="text-center p-4 hover:bg-surface-container-low cursor-pointer transition-colors">26</div>
+</div>
+<div class="space-y-4">
+<label class="font-label-sm uppercase text-on-surface-variant block">예약 가능 시간 (10월 7일)</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="border border-primary py-3 px-4 font-label-md text-center hover:bg-primary hover:text-on-primary transition-all duration-300">오전 10:00</button>
+<button class="border border-outline-variant py-3 px-4 font-label-md text-center hover:bg-surface-container-high transition-all duration-300">오전 11:30</button>
+<button class="border border-outline-variant py-3 px-4 font-label-md text-center hover:bg-surface-container-high transition-all duration-300">오후 02:00</button>
+</div>
+</div>
+</div>
+<div class="relative w-full h-[300px] bg-surface-container overflow-hidden group border border-outline-variant">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A high-end minimalist atelier studio interior" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBMLcTGz_5kkIfUXHQT3mISJVfgY1Amu0Xg3DZXkJCx_D5_WVn5SB6U-b0OKA5uLgE8SkQIdatUpiVhI9XreyTUsgvXWDblAnRvdS1EtJxvLUmKVX2Tcd40ZztMQCqzAQJnwNEAsKsyH1FZSKLx7of928EFlikMWitm-SgtTng1EYu3uAkLBzpT056LZgVOF8Lfe85fODASbo7dzRKxkMpsa_24Y7mZ1nhF4GMRQvzZMksW7hxcYEntxsH9457cr629YqAs9m55mzwE')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex flex-col justify-end p-8">
+<span class="text-on-primary font-label-sm uppercase tracking-widest mb-2">아틀리에 공간</span>
+<h4 class="text-on-primary font-headline-md">아틀리에 도쿄 HQ</h4>
+</div>
+</div>
+</div>
+<!-- Inquiry & Contact Column -->
+<div class="lg:col-span-5 space-y-gutter">
+<!-- Contact Form -->
+<div class="bg-surface-container-low border border-outline-variant p-8 rounded-lg">
+<h3 class="font-headline-md text-headline-md mb-6">문의하기</h3>
+<form class="space-y-6" onsubmit="event.preventDefault()">
+<div>
+<label class="font-label-sm uppercase text-on-surface-variant block mb-2">성함</label>
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-2 transition-colors duration-300 placeholder:text-outline-variant" placeholder="홍길동" type="text"/>
+</div>
+<div>
+<label class="font-label-sm uppercase text-on-surface-variant block mb-2">이메일 주소</label>
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-2 transition-colors duration-300 placeholder:text-outline-variant" placeholder="email@atelier.ai" type="email"/>
+</div>
+<div>
+<label class="font-label-sm uppercase text-on-surface-variant block mb-2">문의 내용</label>
+<textarea class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-2 transition-colors duration-300 placeholder:text-outline-variant resize-none" placeholder="무엇을 도와드릴까요?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 px-8 font-label-md uppercase tracking-widest hover:opacity-90 active:scale-[0.98] transition-all">문의 제출하기</button>
+</form>
+</div>
+<!-- Quick Inquiry Links -->
+<div class="space-y-4">
+<h4 class="font-label-sm uppercase text-on-surface-variant tracking-widest">빠른 문의</h4>
+<a class="flex items-center justify-between p-6 border border-outline-variant hover:bg-primary hover:text-on-primary group transition-all duration-300 bg-surface-container-lowest" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary">chat_bubble</span>
+<span class="font-label-md">카카오톡 빠른 문의</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-6 border border-outline-variant hover:bg-primary hover:text-on-primary group transition-all duration-300 bg-surface-container-lowest" href="mailto:contact@atelier.ai">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary">mail</span>
+<span class="font-label-md">이메일 직통 채널</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Trust Indicators -->
+<div class="p-8 border-l-2 border-primary bg-surface-container-highest/30">
+<p class="font-body-md text-on-surface-variant italic mb-4">"AI 분석은 기초를 제공해주었고, 퍼스널 컨설팅은 제 비전을 현실로 만들어주었습니다. 진정한 전문가의 경험이었습니다."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of Elena Vassily" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLSRdt6yWj83R3mkCVUvGjiwS4L7OFKLqFl6yyKrL6lUACh-Xiei4_O1YwgOGUNVItLiiEOjID17cZZz4L7gM_p5tjsM0H6tmhcPqoxllIwDM9XFz-JBXPawZ2t7rlk_Tn5f49tDzhJ1-fYX5u3-vuRBew3GGw999jzYajwpA7g6M6MzyqIGIVsyy1TAN9zPLrOdMXZBzlTjfyetDgNNdb8Jmt5YfoEbqR0jzdOdexKDZhNmwcTv2t1l3LBw8vxWjxVsVPLVPcn5CP"/>
+</div>
+<div>
+<p class="font-label-md leading-none">엘레나 바실리</p>
+<p class="text-label-sm text-on-surface-variant">크리에이티브 디렉터</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-xl max-w-[1440px] mx-auto w-full">
+<div class="mb-8 md:mb-0">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">ATELIER AI</h2>
+<p class="font-label-md text-label-md uppercase text-on-surface-variant">© 2024 ATELIER AI. DIGITAL ATELIER EXPERIENCE.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">개인정보 처리방침</a>
+<a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">이용약관</a>
+<a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">스타일 가이드</a>
+<a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">문의하기</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for calendar
+        document.querySelectorAll('.calendar-grid div').forEach(day => {
+            if (day.innerText && !day.classList.contains('text-outline-variant') && !day.classList.contains('text-on-surface-variant')) {
+                day.addEventListener('click', function() {
+                    document.querySelectorAll('.calendar-grid div').forEach(d => d.classList.remove('bg-primary', 'text-on-primary', 'font-bold'));
+                    this.classList.add('bg-primary', 'text-on-primary', 'font-bold');
+                });
+            }
+        });
+    </script>
+</body></html>

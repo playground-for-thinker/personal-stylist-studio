@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ATELIER AI | AI 스타일 분석</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f6f3f2",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-background": "#1b1c1c",
+                        "on-secondary-fixed": "#1b1d0e",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-bright": "#fbf9f8",
+                        "on-primary-fixed": "#001c3a",
+                        "on-tertiary-container": "#858687",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#1d1f1f",
+                        "on-surface-variant": "#43474e",
+                        "surface-tint": "#476083",
+                        "secondary": "#5e604d",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "outline": "#74777f",
+                        "on-secondary-fixed-variant": "#474836",
+                        "on-primary-container": "#6f88ad",
+                        "surface-variant": "#e4e2e1",
+                        "surface-container-highest": "#e4e2e1",
+                        "inverse-on-surface": "#f3f0f0",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#e1e1c9",
+                        "primary": "#000613",
+                        "background": "#fbf9f8",
+                        "tertiary": "#050606",
+                        "surface": "#fbf9f8",
+                        "inverse-primary": "#afc8f0",
+                        "inverse-surface": "#303030",
+                        "primary-fixed": "#d4e3ff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#afc8f0",
+                        "surface-container-high": "#eae8e7",
+                        "primary-container": "#001f3f",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container": "#f0eded",
+                        "secondary-fixed": "#e4e4cc",
+                        "secondary-fixed-dim": "#c8c8b0",
+                        "on-secondary-container": "#636451"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-xl": "64px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-xl": ["Bodoni Moda"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["Bodoni Moda"],
+                        "headline-lg": ["Bodoni Moda"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 2px;
+            background: #E5E5E5;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #000613;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 glass-nav border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-[1440px] mx-auto w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<a href="../kor_1/code.html"><h1 class="font-headline-md text-headline-md tracking-tighter text-primary">ATELIER AI</h1></a>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="../kor_1/code.html">홈</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="../kor_2/code.html">서비스</a>
+<a class="text-primary font-semibold border-b-2 border-primary font-label-md" href="../ai_kor/code.html">AI 분석</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="../kor_3/code.html">예약</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-stack-xl max-w-[1440px] mx-auto px-margin-desktop min-h-screen">
+<!-- Hero Section -->
+<section class="mb-stack-xl">
+<div class="max-w-3xl">
+<h2 class="font-headline-xl text-headline-xl mb-4">디지털 아틀리에</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">첨단 신경망 분석을 통해 당신만의 퍼스널 스타일을 완성하세요. 우리의 AI 엔진은 당신의 체형 비율과 미적 취향을 분석하여 맞춤형 워드롭 로드맵을 제안합니다.</p>
+</div>
+</section>
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Analysis Input Form (Step 1 & 2) -->
+<aside class="w-full lg:w-1/3 flex flex-col gap-stack-lg">
+<div class="p-8 border border-outline-variant bg-surface-container-lowest rounded-lg">
+<h3 class="font-label-md text-label-md uppercase mb-stack-md text-on-surface-variant">분석 입력</h3>
+<form class="flex flex-col gap-stack-lg" id="styleForm">
+<!-- Photo Upload Area -->
+<div class="group">
+<label class="font-label-sm text-label-sm uppercase mb-2 block text-on-surface-variant">1. 스타일 레퍼런스</label>
+<div class="border-2 border-dashed border-outline-variant hover:border-primary transition-colors cursor-pointer aspect-[3/4] flex flex-col items-center justify-center gap-4 relative overflow-hidden rounded-lg bg-surface-container-low" id="dropZone">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:scale-110 transition-transform">add_a_photo</span>
+<p class="text-label-sm text-center px-8 text-on-surface-variant">실루엣 사진을 끌어다 놓거나 클릭하여 업로드하세요</p>
+<input accept="image/*" class="hidden" id="fileInput" type="file"/>
+<div class="absolute inset-0 hidden" id="previewContainer">
+<img class="w-full h-full object-cover" id="imagePreview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE6pZavOYW309Ngw9RhlKGyVWRWmTOe3Esb0I3hdGNuDP1SR1ZinhDrxW3VPUXWkaBDt3MA-fAw_I-UH_mrrr7etxiqa6hMnGwVAk8kWgD78d2OiZYbff8-WL8of3SWTzHP8R6RHD3EQUgOAqVOUOHKSGf19EIIkjvdOMVpxiv0tlmFUZFznuxlFCVzX0VziAA3X6hYlux-Dc2p5ntE0y20d-N8MvK75Bn4cFcCAJqPsmUiK0qZh2z8eYFe1G1WUFpOy-sgpdArZw4"/>
+<button class="absolute top-4 right-4 bg-primary text-white p-2 rounded-full hover:bg-opacity-80" id="removePhoto" type="button">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Physical Metrics -->
+<div class="flex flex-col gap-6">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm uppercase text-on-surface-variant">키</label>
+<span class="font-body-md" id="heightVal">175 cm</span>
+</div>
+<input class="w-full cursor-pointer" id="heightSlider" max="210" min="140" type="range" value="175"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm uppercase text-on-surface-variant">몸무게</label>
+<span class="font-body-md" id="weightVal">70 kg</span>
+</div>
+<input class="w-full cursor-pointer" id="weightSlider" max="150" min="40" type="range" value="70"/>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-lg font-label-md uppercase tracking-widest hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-3" id="analyzeBtn" type="button">
+<span>내 스타일 분석하기</span>
+<span class="material-symbols-outlined text-[20px]">flare</span>
+</button>
+</form>
+</div>
+</aside>
+<!-- Results Canvas -->
+<div class="flex-1 min-h-[600px] border border-outline-variant p-8 relative overflow-hidden bg-surface-container-lowest rounded-lg">
+<!-- Welcome/Empty State -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center px-12 z-10 transition-opacity duration-500" id="emptyState">
+<div class="relative z-20">
+<span class="material-symbols-outlined text-6xl text-primary/20 mb-6" style="font-variation-settings: 'wght' 100;">draw</span>
+<h3 class="font-headline-md text-headline-md mb-2">입력 대기 중</h3>
+<p class="text-on-surface-variant max-w-sm">프로필 입력을 완료하시면 AI 기반의 스타일 페르소나와 맞춤형 추천을 생성해 드립니다.</p>
+</div>
+</div>
+<!-- Analysis State (Hidden) -->
+<div class="hidden absolute inset-0 flex flex-col items-center justify-center z-30 bg-surface-container-lowest/80 backdrop-blur-sm" id="loadingState">
+<div class="flex flex-col items-center gap-4">
+<div class="w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+<p class="font-label-md uppercase tracking-widest animate-pulse">스타일 벡터 스캔 중...</p>
+</div>
+</div>
+<!-- Results State (Hidden) -->
+<div class="hidden space-y-stack-lg transition-all duration-700 opacity-0 transform translate-y-4" id="resultsState">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-outline-variant pb-6">
+<div>
+<p class="text-label-sm uppercase text-on-surface-variant mb-1">당신의 스타일 아키타입</p>
+<h2 class="font-headline-lg text-headline-lg">미니멀리스트 아키텍트</h2>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-label-sm uppercase">#모던</span>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-label-sm uppercase">#시크</span>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-label-sm uppercase">#구조적</span>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-4">
+<h4 class="font-label-md uppercase text-on-surface-variant">추천 팔레트</h4>
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-primary rounded-lg shadow-inner" title="Deep Navy"></div>
+<div class="w-12 h-12 bg-[#D1D1C4] rounded-lg shadow-inner" title="Pebble"></div>
+<div class="w-12 h-12 bg-[#F5F5F5] rounded-lg shadow-inner" title="Off-White"></div>
+<div class="w-12 h-12 bg-[#5E604D] rounded-lg shadow-inner" title="Olive Moss"></div>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md uppercase text-on-surface-variant">비율 가이드</h4>
+<p class="text-body-md text-on-surface-variant">175cm의 키를 바탕으로, 프레임의 균형을 맞추기 위해 하이웨이스트 테일러드 트라우저와 함께 **수직으로 길어 보이는 실루엣**을 추천합니다.</p>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-md uppercase text-on-surface-variant">맞춤형 추천 아이템</h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden mb-4 rounded-lg bg-surface-container-low border border-outline-variant">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDevF_71PuKJyuwthNDAkAd7OKFDwUWFqUdc-fJ_lSwINRRd06gGloG699PzWkPCzTdjW0gdiyREcy7PXE7PGRoiLmhMAH0BYTMKzNt88FiFC7By7CxOaWy1ztTIhor4ZWqsJQZX52GO5OWpJOJiVPe0XKLJGBm4CHLa7s8l7twCecuNEP1KOGKvaO2nGdwNxeJgNNUiy69q50jK4R_xGi0RHDtK12wR8ov7ANIw31t3qbfjdKgDTMgACGfzzagItJxX7HS1mq29NaU"/>
+</div>
+<p class="font-label-sm uppercase text-on-surface-variant">아이템 01</p>
+<h5 class="font-body-md font-semibold">스트럭처드 캐시미어 니트</h5>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden mb-4 rounded-lg bg-surface-container-low border border-outline-variant">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqNNJy-jQzmiK5-lSyeWFCTAsfo5kdoWmJdVERQ8-QbXOYFjPCenfdTCTYT1_SnYKrJtuHh_W1mWP53mG3cTcRuHheC0FH7Q0AmgdyhRwZxZfVS_-tce7iuqKVlcQNAk9ervV2VKQCsKoHuiQkj7heV7HkYUbSLVg90Kp6d_Q3I6j7c6YLbPaGoXuBkZZllHgAvQk91thEW3LkJrLh69KYYpspBG2JxsNjMVGV7lThaT6FgHlcpK3dxyY9FGpxmW1ZkgdsEK7f83Eb"/>
+</div>
+<p class="font-label-sm uppercase text-on-surface-variant">아이템 02</p>
+<h5 class="font-body-md font-semibold">와이드 레그 울 트라우저</h5>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden mb-4 rounded-lg bg-surface-container-low border border-outline-variant">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBavEpLmbFq-hXY1p5ecWL5--n7cZWCFx3toTt2BqyzsL0cUNjx6b0M1rlGx12c6L5BWlOyTVY9BH6IcLkymBNaVvKiGrGCRWNYSy36tapx-Sc96x-HL_OcLwh2oogGctEj8SLQaoNLt8m0MG_U-u7M9lAU0pr_UvEyrp4aTssKXomylqp983Ld-9Kcly82lDYdt3Qn7HmyT0M06do0cq-fSWYCbQygcx8J7qJlzfJ5Bu_vt-i7LklRyIuxMtivprP0iFsKUOGReDpC"/>
+</div>
+<p class="font-label-sm uppercase text-on-surface-variant">아이템 03</p>
+<h5 class="font-body-md font-semibold">컬럼 오버코트</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- History/Timeline Section -->
+<section class="mt-stack-xl">
+<h3 class="font-label-md uppercase mb-stack-lg text-on-surface-variant">당신의 스타일 여정</h3>
+<div class="flex flex-col gap-6 relative">
+<div class="absolute left-[7px] top-4 bottom-4 w-[1px] bg-outline-variant"></div>
+<div class="flex gap-8 items-start relative">
+<div class="w-[15px] h-[15px] rounded-full bg-primary mt-1.5 z-10"></div>
+<div>
+<p class="text-label-sm text-on-surface-variant mb-1">오늘</p>
+<h4 class="font-body-md font-bold">새로운 분석: 미니멀리스트 아키텍트</h4>
+<p class="text-body-md text-on-surface-variant">실루엣 분석 및 세부 취향 파악을 성공적으로 완료했습니다.</p>
+</div>
+</div>
+<div class="flex gap-8 items-start relative opacity-50">
+<div class="w-[15px] h-[15px] rounded-full bg-outline-variant mt-1.5 z-10"></div>
+<div>
+<p class="text-label-sm text-on-surface-variant mb-1">2023년 10월 24일</p>
+<h4 class="font-body-md font-bold">캡슐 워드롭 V1</h4>
+<p class="text-body-md text-on-surface-variant">가을/겨울 시즌을 위한 12개의 아이템이 추천되었습니다.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-xl mt-stack-xl max-w-[1440px] mx-auto w-full">
+<div class="mb-8 md:mb-0">
+<h2 class="font-headline-md text-headline-md tracking-tighter text-primary">ATELIER AI</h2>
+<p class="font-label-md text-label-md uppercase text-on-surface-variant mt-2">© 2024 ATELIER AI. 디지털 아틀리에 경험.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">개인정보 처리방침</a>
+<a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">이용약관</a>
+<a class="font-label-md text-label-md uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">문의하기</a>
+</div>
+</div>
+</footer>
+<script>
+    // Slider Interactions
+    const heightSlider = document.getElementById('heightSlider');
+    const heightVal = document.getElementById('heightVal');
+    const weightSlider = document.getElementById('weightSlider');
+    const weightVal = document.getElementById('weightVal');
+
+    heightSlider.addEventListener('input', (e) => {
+        heightVal.innerText = `${e.target.value} cm`;
+    });
+
+    weightSlider.addEventListener('input', (e) => {
+        weightVal.innerText = `${e.target.value} kg`;
+    });
+
+    // Image Upload Logic
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const previewContainer = document.getElementById('previewContainer');
+    const removePhoto = document.getElementById('removePhoto');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    
+    fileInput.addEventListener('change', function(e) {
+        if (this.files && this.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').src = e.target.result;
+                previewContainer.classList.remove('hidden');
+            };
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+
+    removePhoto.addEventListener('click', (e) => {
+        e.stopPropagation();
+        previewContainer.classList.add('hidden');
+        fileInput.value = '';
+    });
+
+    // Analysis Simulation
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const emptyState = document.getElementById('emptyState');
+    const loadingState = document.getElementById('loadingState');
+    const resultsState = document.getElementById('resultsState');
+
+    analyzeBtn.addEventListener('click', () => {
+        if (previewContainer.classList.contains('hidden')) {
+            alert('먼저 스타일 레퍼런스 사진을 업로드해주세요.');
+            return;
+        }
+
+        emptyState.style.opacity = '0';
+        setTimeout(() => {
+            emptyState.classList.add('hidden');
+            loadingState.classList.remove('hidden');
+            
+            setTimeout(() => {
+                loadingState.classList.add('hidden');
+                resultsState.classList.remove('hidden');
+                setTimeout(() => {
+                    resultsState.style.opacity = '1';
+                    resultsState.style.transform = 'translateY(0)';
+                }, 50);
+            }, 3000);
+        }, 500);
+    });
+</script>
+</body></html>

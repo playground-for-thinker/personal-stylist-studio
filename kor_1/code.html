@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ATELIER AI | Personal Styling &amp; Digital Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-surface": "#1b1c1c",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed": "#1b1d0e",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "surface-bright": "#fbf9f8",
+                    "on-primary-fixed": "#001c3a",
+                    "on-tertiary-container": "#858687",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#1d1f1f",
+                    "on-surface-variant": "#43474e",
+                    "surface-tint": "#476083",
+                    "secondary": "#5e604d",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "outline": "#74777f",
+                    "on-secondary-fixed-variant": "#474836",
+                    "on-primary-container": "#6f88ad",
+                    "surface-variant": "#e4e2e1",
+                    "surface-container-highest": "#e4e2e1",
+                    "inverse-on-surface": "#f3f0f0",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#e1e1c9",
+                    "primary": "#000613",
+                    "background": "#fbf9f8",
+                    "tertiary": "#050606",
+                    "surface": "#fbf9f8",
+                    "inverse-primary": "#afc8f0",
+                    "inverse-surface": "#303030",
+                    "primary-fixed": "#d4e3ff",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#afc8f0",
+                    "surface-container-high": "#eae8e7",
+                    "primary-container": "#001f3f",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container": "#f0eded",
+                    "secondary-fixed": "#e4e4cc",
+                    "secondary-fixed-dim": "#c8c8b0",
+                    "on-secondary-container": "#636451"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-xl": "64px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "8px",
+                    "gutter": "24px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-xl": ["Bodoni Moda"],
+                    "headline-lg-mobile": ["Bodoni Moda"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-md": ["Bodoni Moda"],
+                    "headline-lg": ["Bodoni Moda"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #fbf9f8; color: #1b1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .hero-gradient { background: linear-gradient(180deg, rgba(251, 249, 248, 0) 0%, rgba(251, 249, 248, 1) 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface/80 backdrop-blur-md z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-[1440px] mx-auto w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer text-primary">menu</span>
+<a href="../kor_1/code.html"><h1 class="font-headline-md text-headline-md tracking-tighter text-primary">ATELIER AI</h1></a>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-primary font-semibold border-b-2 border-primary transition-colors duration-300" href="../kor_1/code.html">홈</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="../kor_2/code.html">서비스</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="../ai_kor/code.html">AI 분석</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="../kor_3/code.html">예약</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative h-[795px] min-h-[600px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-1000 hover:scale-105" data-alt="A sophisticated editorial fashion photograph of a model in a high-contrast minimalist architectural setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7B9xXBjd-0XvRy_FWNuGOXU2ObimSIQuZVX5oDCNXBdU3q7r2QcjbKwmCpThJnoO_6Nik8gVoujt3EPE4UBk2xlw5EfsJaY4Y1rmYENfj_hhMS_koFAv2l2iE9W5xaNVOusJwMGm36um9ZmqcP_rpQbfR-YBqLdMCqqj-jBC7yZg18ncdZKzG9Nbarb39ItTJNh557qQqBKRng5dQ4htCAtu2oGHIF8ZNo9tBC1s4pX7UbEV0Y1GucioxD7ptD3F-a-xeZn90GKKA')">
+</div>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 px-margin-desktop max-w-[1440px] mx-auto w-full">
+<div class="max-w-2xl">
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-4 block">Precision Meets Personalization</span>
+<h2 class="font-headline-xl text-headline-xl mb-6 leading-tight">지능의 시선으로 당신의 가치를 높이세요.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg max-w-lg">
+                    Atelier AI는 하이패션 큐레이션과 첨단 생체 분석을 결합하여 진정으로 당신에게 어울리는 스타일을 제안합니다.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="px-8 py-4 bg-primary text-on-primary font-label-md rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2" href="../ai_kor/code.html">
+                        AI 분석 시작하기
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<button class="px-8 py-4 border border-primary text-primary font-label-md rounded-lg hover:bg-surface-container-low transition-all">
+                        쇼케이스 보기
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Services Section -->
+<section class="py-stack-xl px-margin-desktop max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-stack-lg gap-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg">우리의 디지털 아틀리에</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">안목 있는 개인을 위한 전문 분석 서비스.</p>
+</div>
+<a class="font-label-md text-label-md underline hover:text-primary-container transition-colors" href="../kor_2/code.html">모든 서비스 보기</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Color Analysis -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-lg mb-4 bg-surface-container">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A macro shot of luxurious silk fabric swatches" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjTKSyWS2DO1sutPU1evetUGOSei7pgj6V2oDV4rtXSw-dCK9Txa2N6Xi-VwAfsU7YNGKkTNsmtKD1bXGMnu0xfI-DjL3wjlhNCy3XJnU9lxfnHq7FG4jq3DWdzQFIDeSFIadiUFkgxSB1WANNPVlmKIc6LZdvNhDiKpp8VORud54LergKtSHIPCs0_B0Wc9tFLaGhD1zrUpFJpO3GtoiUT_Vi1uZgdVEDpe4sufiXKUE9OkuUMjDAXnR9r9PZE76b7O8SZP-YNJCw')">
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md">컬러 진단</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">피부 톤에 맞춘 AI 기반 퍼스널 컬러 진단.</p>
+</div>
+<span class="material-symbols-outlined mt-1">flare</span>
+</div>
+</div>
+<!-- Body Analysis -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-lg mb-4 bg-surface-container">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist architectural line drawing superimposed over a silhouette" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAi0zybd0a9u9ubdq-TU2imtw_SqXCUhvENYds4D537EsymeKOhpBbmR5I8_1xheE-Q44auPPsyZqhGgRgE01osR2wTW4qx6w2IN7su18k97r-okXFgy6gu6OZ3X7qjjSU24PsCFCKZ9zefzYi1Stkolc1x3cF4tAD7ZbaQvum0A9uV2fvG7SeMDXAGg_ebX2aHKo8uRK9ZijIBnwgskpR7x--dS6d5oNFix-ogAYfvVK01NNB1HmJK95lem2QmCsNKOItnSezagyKx')">
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md">체형 분석</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">당신의 체격에 최적화된 실루엣을 찾는 모폴로지 매핑.</p>
+</div>
+<span class="material-symbols-outlined mt-1">content_cut</span>
+</div>
+</div>
+<!-- Virtual Wardrobe -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded-lg mb-4 bg-surface-container">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A clean, organized digital closet interface" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDytU_4uCxNd5JV0bVNZ9Xbb_5mVL8oa5BARpl76pqJA4RsV8-lTszj4JPpFbuHZ3Pwt7ZXamLcxvicwkj9wvMY3EsYrQOYy7JlswLQnnRemC7Ng9VYvRMoWFwfRzgIxrcs2mnPOxdDeJkfJ718ThwiHx-P5__N8OellIFPqResfncJUz3nQNCv9tTd5ze19c8Kc9l06KiZxzy3h3-5oOh23pFg__EfKUfeH5ad3sNvAjJI94fuPcx-AF6cPp5Gu3El8eSNeA6kicUn')">
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md">디지털 워드롭</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">당신의 옷장을 디지털 트윈으로 구현하여 효율적인 코디를 돕습니다.</p>
+</div>
+<span class="material-symbols-outlined mt-1">checkroom</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Why AI Styling Section - Bento Layout -->
+<section class="py-stack-xl bg-surface-container-low">
+<div class="px-margin-desktop max-w-[1440px] mx-auto">
+<div class="max-w-2xl mb-stack-lg">
+<h3 class="font-headline-lg text-headline-lg">왜 지능형 큐레이션인가요?</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-4">
+                    패션은 주관적이지만, 핏과 컬러는 과학입니다. 우리는 옷을 고르는 과정에서 불확실성을 제거합니다.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Feature 1 -->
+<div class="md:col-span-8 bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant flex flex-col md:flex-row gap-stack-lg items-center">
+<div class="flex-1 order-2 md:order-1">
+<span class="material-symbols-outlined text-primary mb-4 p-3 bg-secondary-container rounded-full">query_stats</span>
+<h5 class="font-headline-md text-headline-md mb-2">데이터가 만드는 우아함</h5>
+<p class="font-body-md text-body-md text-on-surface-variant">우리의 알고리즘은 섬유의 무게부터 대비율까지 수천 개의 스타일 벡터를 처리하여 모든 제안이 시각적 과학에 근거하도록 보장합니다.</p>
+</div>
+<div class="flex-1 order-1 md:order-2 w-full h-48 bg-cover rounded-lg" data-alt="An abstract visualization of digital data flowing through white silk" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBsutYmoP-1f1ESyTMYa0cF7IPYqOhdn4CEJEr1Ba33wukQ0yGTJxhelJJvoMTKFMuSCHq4J36s2MDDxF59RNRNECX8EWuOoO9GrCcChdjg1poLQMpnR9rDjU76okeiWAeU8-EgI7zu6Q3uMk1dn7S5pmVccVOEgGsm4JppB0ZRZZs8kpDwHBFy960DpZy8_EGp8btKJP_vGHpTnVCWP_nEi8t7XqmMUjhfUoZeJRartO9Xv7GzEIJDa8p4FBjHlCDXvRuhBY9xTQt')">
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="md:col-span-4 bg-primary text-on-primary p-stack-lg rounded-xl flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary-container mb-4">verified_user</span>
+<h5 class="font-headline-md text-headline-md mb-2">전문가의 주관적 검토</h5>
+<p class="font-body-md text-body-md opacity-80">AI가 패턴을 식별하고, 전문 휴먼 스타일리스트가 룩의 감성을 승인합니다.</p>
+</div>
+<div class="mt-8 border-t border-on-primary/20 pt-4 flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase">Style Guard™</span>
+<span class="material-symbols-outlined">north_east</span>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="md:col-span-5 bg-surface-container-high p-stack-lg rounded-xl flex flex-col gap-4">
+<div class="h-40 w-full bg-cover rounded-lg" data-alt="A portrait of a person in a perfectly tailored suit" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTsWRcQw6ldyIDPI-IjHW9ybT_OvmRKNwVcdwv0XsrKFbtP9ajH8R7Kuwi1DO9LEChdiFF-ze-nzhJxdFlb52vhg0gELoVJspyTs5dQ5t07gPcX21Ez32teAm_Tb7D9b0Dx8eOgQdM0-TSZsspClHj4aVZfHuRlJdyB9ZJhF4M15bzPrvv13mTl5bb_hgkSrBr1HO6OKnZOrL234msNng1nQ8IJPAfaEVbsw7n2fTmaQpJzh5D4ev3DRb-h7DAyTpPIgH6tVIwiRxK')">
+</div>
+<h5 class="font-headline-md text-headline-md">지속 가능한 옷장 경제</h5>
+<p class="font-body-md text-body-md text-on-surface-variant">자신에게 어울리는 것만 구매함으로써 낭비를 줄이고 평생 지속되는 시대를 초월한 캡슐 워드롭을 구축하세요.</p>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-7 bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant relative overflow-hidden group">
+<div class="relative z-10">
+<h5 class="font-headline-md text-headline-md mb-2">실시간 스타일 적응</h5>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">당신의 스타일은 진화합니다. 우리의 AI는 당신의 피드백을 학습하여 라이프스타일과 선호도 변화에 따라 프로필을 업데이트합니다.</p>
+<div class="flex gap-2 mt-6">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-sm rounded-full">머신 러닝</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-sm rounded-full">스타일 진화</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-5 group-hover:rotate-12 transition-transform duration-500">psychology</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-stack-xl px-margin-desktop text-center bg-surface relative overflow-hidden">
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-6">당신의 스타일 변신은 한 번의 스캔으로 시작됩니다.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">
+                우리의 디지털 아틀리에를 통해 자신의 진정한 미학을 발견한 10,000명 이상의 회원들과 함께하세요.
+            </p>
+<a class="inline-block px-12 py-5 bg-primary text-on-primary font-label-md rounded-lg shadow-sm hover:shadow-lg transition-all active:scale-95" href="../ai_kor/code.html">
+                지금 AI 분석 시작하기
+            </a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-xl mt-stack-xl max-w-[1440px] mx-auto w-full">
+<div class="mb-8 md:mb-0 text-center md:text-left">
+<h4 class="font-headline-md text-headline-md mb-2">ATELIER AI</h4>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">© 2024 ATELIER AI. DIGITAL ATELIER EXPERIENCE.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">개인정보 처리방침</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">이용약관</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">스타일 가이드</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">문의하기</a>
+</div>
+<div class="mt-8 md:mt-0 flex gap-4">
+<a class="w-10 h-10 border border-outline-variant flex items-center justify-center rounded-full hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="w-10 h-10 border border-outline-variant flex items-center justify-center rounded-full hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Scroll Effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('shadow-sm');
+                } else {
+                    header.classList.remove('shadow-sm');
+                }
+            });
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

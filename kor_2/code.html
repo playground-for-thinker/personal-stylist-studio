@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>서비스 상세 정보 | ATELIER AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-line {
+            height: 1px;
+            background: linear-gradient(to right, #74777f 0%, transparent 100%);
+        }
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f6f3f2",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-surface": "#1b1c1c",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-background": "#1b1c1c",
+                      "on-secondary-fixed": "#1b1d0e",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "surface-bright": "#fbf9f8",
+                      "on-primary-fixed": "#001c3a",
+                      "on-tertiary-container": "#858687",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#1d1f1f",
+                      "on-surface-variant": "#43474e",
+                      "surface-tint": "#476083",
+                      "secondary": "#5e604d",
+                      "surface-dim": "#dcd9d9",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "outline": "#74777f",
+                      "on-secondary-fixed-variant": "#474836",
+                      "on-primary-container": "#6f88ad",
+                      "surface-variant": "#e4e2e1",
+                      "surface-container-highest": "#e4e2e1",
+                      "inverse-on-surface": "#f3f0f0",
+                      "on-error-container": "#93000a",
+                      "secondary-container": "#e1e1c9",
+                      "primary": "#000613",
+                      "background": "#fbf9f8",
+                      "tertiary": "#050606",
+                      "surface": "#fbf9f8",
+                      "inverse-primary": "#afc8f0",
+                      "inverse-surface": "#303030",
+                      "primary-fixed": "#d4e3ff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#afc8f0",
+                      "surface-container-high": "#eae8e7",
+                      "primary-container": "#001f3f",
+                      "outline-variant": "#c4c6cf",
+                      "surface-container": "#f0eded",
+                      "secondary-fixed": "#e4e4cc",
+                      "secondary-fixed-dim": "#c8c8b0",
+                      "on-secondary-container": "#636451"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-md": "16px",
+                      "stack-xl": "64px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "8px",
+                      "gutter": "24px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-xl": ["Bodoni Moda"],
+                      "headline-lg-mobile": ["Bodoni Moda"],
+                      "label-sm": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"],
+                      "headline-md": ["Bodoni Moda"],
+                      "headline-lg": ["Bodoni Moda"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant dark:border-outline z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-[1440px] mx-auto w-full">
+<a class="flex items-center gap-4 cursor-pointer active:opacity-70" href="../kor_1/code.html">
+<span class="material-symbols-outlined text-primary">menu</span>
+<span class="font-headline-md text-headline-md tracking-tighter text-primary">ATELIER AI</span>
+</a>
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors duration-300" href="../kor_1/code.html">홈</a>
+<a class="text-primary font-semibold border-b-2 border-primary font-label-md text-label-md" href="../kor_2/code.html">서비스</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors duration-300" href="../ai_kor/code.html">AI 분석</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors duration-300" href="../kor_3/code.html">예약 정보</a>
+</nav>
+<div class="flex items-center gap-4 cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-stack-xl max-w-[1440px] mx-auto px-margin-desktop">
+<!-- Hero Section: Editorial Header -->
+<section class="mb-stack-xl grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-8">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-4">정밀한 미학 (Precision Aesthetic)</p>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-stack-md leading-none">디지털 아틀리에를 위한 큐레이션 경험</h1>
+<div class="editorial-line w-32 mb-stack-md"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    하이패션의 전문성과 인공지능이 만나는 개인 스타일링의 새로운 시대를 경험하세요. 당사의 프로그램은 수학적 정밀함과 예술적 직관을 통해 당신의 시각적 아이덴티티를 정의하도록 설계되었습니다.
+                </p>
+</div>
+</section>
+<!-- Service Cards: Bento Grid Style -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-stack-xl">
+<!-- Service 1: Personal Color Diagnosis -->
+<div class="md:col-span-7 group">
+<div class="h-full bg-surface-container-low border border-outline-variant p-stack-lg flex flex-col justify-between hover-lift">
+<div class="flex justify-between items-start mb-stack-lg">
+<div class="flex flex-col">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-icon="palette">palette</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">퍼스널 컬러 진단</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">스펙트럼 분석을 통해 타고난 피부 톤과 조화를 이루는 색상 팔레트를 발견하세요.</p>
+</div>
+<span class="font-headline-md text-headline-md text-primary/20">01</span>
+</div>
+<div class="mb-stack-lg grid grid-cols-2 gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75" data-icon="check_circle">check_circle</span>
+<span class="text-label-md font-label-md">계절 유형</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75" data-icon="check_circle">check_circle</span>
+<span class="text-label-md font-label-md">색조 분석</span>
+</div>
+</div>
+<div class="flex items-baseline justify-between pt-stack-md border-t border-outline-variant">
+<span class="font-headline-md text-headline-md text-primary">$180.00</span>
+<a class="bg-primary text-on-primary font-label-md text-label-md px-8 py-3 rounded-lg hover:opacity-90 transition-opacity uppercase tracking-wider" href="../kor_3/code.html">지금 예약하기</a>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 h-[400px] md:h-auto">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A macro studio shot of a high-end fashion color swatches collection on silk fabrics. The lighting is editorial and soft, highlighting the textures of the vibrant and neutral fabrics. The composition is clean and minimalist, reflecting a luxury personal styling service aesthetic with a dominant palette of ivory, charcoal, and muted gold." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIgaOSpwiaFJaaeZ6Th3-j5mDWrlsytx8weEZdnsD_tTj8GVEH8OyhSaSfuQwwc_y-Y94sww_OMEWKiuXAjrEdCVdAxE4Fhxpd8dDXpOOQpsZgSSlHgHf-DZL_5Cgq2YPq9mIqNpttnEqg8UfuqoGP7_ysOkXMOIRg89EXN1yiHtUacy2GE8RhUvDLLvvlvXFl9AJu0kli2i_X19Zl0D9L0OZEcRi41RKCQat4Odf9XCelCxLlS1ORwEVuQ_ftGAeIC3S3O3wKJDxF"/>
+</div>
+<!-- Service 2: Body Shape Analysis -->
+<div class="md:col-span-4 h-[400px] md:h-auto order-4 md:order-3">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A minimalist architectural photograph of a mannequin silhouette in a high-end atelier setting. The space is filled with bright, natural light, creating soft shadows. The overall aesthetic is modern and sophisticated, featuring clean lines and a palette of warm beiges and cool grays, symbolizing precision in body shape analysis." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2y4fuJrViOx8rI6toyU1QjzD_A-gzud4dVT_-pPboz2eIYojBHCJzJL6Oxs7E5MD26ec4gk0lkTDhp73BBLTIk0r8EWlp5MolUG9p1y5jVubtKBWqf7mv9TXD4nLqhjq2kdkJF-CmXZDZB4dtaTL2B2SeJ8FCF71KY5JgXX08x_3K3DCWJ1rZIW0aUdu4M2uP_gpB3JleGO4vQo9YEYgOcfjweTYGKDti8m0zVNeKMUnhE8Q6W2_H7QsPDtLA-ynHxnK18kaBbK9p"/>
+</div>
+<div class="md:col-span-8 group order-3 md:order-4">
+<div class="h-full bg-surface-container-low border border-outline-variant p-stack-lg flex flex-col justify-between hover-lift">
+<div class="flex justify-between items-start mb-stack-lg">
+<div class="flex flex-col">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-icon="straighten">straighten</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">체형 분석</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">당신의 자연스러운 골격을 돋보이게 할 실루엣을 찾기 위해 비율을 기하학적으로 평가합니다.</p>
+</div>
+<span class="font-headline-md text-headline-md text-primary/20">02</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-stack-lg">
+<div class="bg-surface p-4 rounded border border-outline-variant/30">
+<h4 class="font-label-md text-label-md text-primary mb-1 uppercase">지표</h4>
+<p class="text-sm text-on-surface-variant">3D 실루엣 매핑</p>
+</div>
+<div class="bg-surface p-4 rounded border border-outline-variant/30">
+<h4 class="font-label-md text-label-md text-primary mb-1 uppercase">집중 분석</h4>
+<p class="text-sm text-on-surface-variant">균형 잡힌 비례</p>
+</div>
+<div class="bg-surface p-4 rounded border border-outline-variant/30">
+<h4 class="font-label-md text-label-md text-primary mb-1 uppercase">결과물</h4>
+<p class="text-sm text-on-surface-variant">맞춤형 핏 가이드</p>
+</div>
+</div>
+<div class="flex items-baseline justify-between pt-stack-md border-t border-outline-variant">
+<span class="font-headline-md text-headline-md text-primary">$210.00</span>
+<a class="border border-primary text-primary font-label-md text-label-md px-8 py-3 rounded-lg hover:bg-primary hover:text-on-primary transition-all uppercase tracking-wider" href="../kor_3/code.html">지금 예약하기</a>
+</div>
+</div>
+</div>
+<!-- Service 3: AI Style Curation -->
+<div class="md:col-span-12 group order-5">
+<div class="h-full bg-primary text-on-primary p-stack-lg md:p-16 flex flex-col md:flex-row gap-stack-xl relative overflow-hidden">
+<div class="flex-1 z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary-container" data-icon="flare" style="font-variation-settings: 'FILL' 1;">flare</span>
+<span class="font-label-md text-label-md text-secondary-container uppercase tracking-[0.2em]">프리미엄 AI 서비스</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl mb-stack-md">AI 스타일 큐레이션</h2>
+<p class="font-body-lg text-body-lg text-surface-variant max-w-xl mb-stack-lg">
+                            당사의 핵심 서비스입니다. 수십 년간의 패션 에디토리얼 아카이브를 학습한 신경망을 활용하여 당신만을 위한 초개인화된 디지털 워드로브와 스타일링 알고리즘을 생성합니다.
+                        </p>
+<div class="flex flex-wrap gap-4 mb-stack-lg">
+<span class="px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm">생성형 워드로브</span>
+<span class="px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm">상황별 알고리즘</span>
+<span class="px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm">트렌드 동기화</span>
+</div>
+<div class="flex items-baseline gap-stack-lg">
+<span class="font-headline-md text-headline-md">$450.00</span>
+<a class="bg-surface text-primary font-label-md text-label-md px-12 py-4 rounded-lg hover:bg-secondary-container transition-colors uppercase tracking-widest font-bold" href="../ai_kor/code.html">분석 시작하기</a>
+</div>
+</div>
+<div class="flex-1 relative min-h-[300px]">
+<div class="absolute inset-0 bg-secondary-container/10 backdrop-blur-sm rounded-lg border border-secondary-container/20"></div>
+<img class="w-full h-full object-cover rounded-lg opacity-80 mix-blend-screen" data-alt="A futuristic, abstract representation of digital fashion data. Flowing holographic lines and glowing particles weave together to form the ghostly outline of a tailored jacket. The background is deep navy, creating a high-tech, luxury tech aesthetic. Lighting is sharp and neon-inspired with soft glows in cool blue and silver tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmCWgCZ2cJqM2wcWWF3YMOzQAYoh7WSTVeglZDLyUj_qK3k_LooDNR-koGzlabh0GD998Hl8fxjlkFZKiR4z-BehfLn4I8Xy_0St90l4A_WppSNEDtlHtYMK7j0TFZwFswoCivU0LRMbZZ73U8j7vQl_dPYHgr3f_E0jKkfcFneyzyVfthwygUZp9xMBnnBuY-i6mF5bdeG2vIxgAKHlRGaG9Se3QVsBQiA3xvZbglSGMEhGht5ABbkpwihlRxD7YdQNoHlnGF2l93"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Timeline -->
+<section class="py-stack-xl border-t border-outline-variant">
+<div class="mb-stack-lg text-center">
+<h3 class="font-headline-lg text-headline-lg text-primary">당신의 스타일 여정</h3>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mt-2">개인적 탁월함을 향한 정밀한 경로</p>
+</div>
+<div class="relative max-w-4xl mx-auto pt-10">
+<!-- Timeline Line -->
+<div class="absolute top-0 bottom-0 left-1/2 w-[1px] bg-outline-variant hidden md:block"></div>
+<div class="space-y-stack-xl">
+<!-- Step 1 -->
+<div class="flex flex-col md:flex-row items-center gap-gutter relative">
+<div class="md:w-1/2 text-right hidden md:block">
+<h4 class="font-headline-md text-headline-md text-primary">입력 및 스캔</h4>
+<p class="font-body-md text-on-surface-variant">디지털 프로필 작성 및 고해상도 생체 정보 업로드를 완료합니다.</p>
+</div>
+<div class="z-20 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs">01</div>
+<div class="md:w-1/2 md:hidden">
+<h4 class="font-headline-md text-headline-md text-primary text-center">입력 및 스캔</h4>
+<p class="font-body-md text-on-surface-variant text-center">디지털 프로필 및 생체 정보 업로드를 완료합니다.</p>
+</div>
+<div class="md:w-1/2"></div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col md:flex-row items-center gap-gutter relative">
+<div class="md:w-1/2"></div>
+<div class="z-20 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs">02</div>
+<div class="md:w-1/2 text-left">
+<h4 class="font-headline-md text-headline-md text-primary">AI 합성 분석</h4>
+<p class="font-body-md text-on-surface-variant">당사의 알고리즘이 현재 및 아카이브 스타일 지표를 바탕으로 데이터를 처리합니다.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col md:flex-row items-center gap-gutter relative">
+<div class="md:w-1/2 text-right hidden md:block">
+<h4 class="font-headline-md text-headline-md text-primary">최종 큐레이션</h4>
+<p class="font-body-md text-on-surface-variant">디지털 아틀리에 결과를 최종 확정하기 위한 1:1 세션을 가집니다.</p>
+</div>
+<div class="z-20 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs">03</div>
+<div class="md:w-1/2 md:hidden">
+<h4 class="font-headline-md text-headline-md text-primary text-center">최종 큐레이션</h4>
+<p class="font-body-md text-on-surface-variant text-center">결과를 확정하기 위한 1:1 세션입니다.</p>
+</div>
+<div class="md:w-1/2"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-tertiary-container border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-xl mt-stack-xl max-w-[1440px] mx-auto w-full">
+<div class="flex flex-col gap-2 mb-8 md:mb-0">
+<span class="font-headline-md text-headline-md text-primary">ATELIER AI</span>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">© 2024 ATELIER AI. 디지털 아틀리에 경험.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-gutter">
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-wider transition-colors duration-200" href="#">개인정보 처리방침</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-wider transition-colors duration-200" href="#">이용약관</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-wider transition-colors duration-200" href="#">스타일 가이드</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md uppercase tracking-wider transition-colors duration-200" href="#">문의하기</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll micro-interaction
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simple Fade-in Observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hover-lift').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>
